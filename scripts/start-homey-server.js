@@ -95,7 +95,7 @@ class HomeyApiClient {
     // 1. Use OAuth 2.0 authorization code flow
     // 2. Exchange CLIENT_ID and CLIENT_SECRET for access token
     // 3. Store and refresh tokens as needed
-    this.accessToken = 'mock-token';
+    this.accessToken = 'MOCK_TOKEN_REPLACE_IN_PRODUCTION';
     console.error('Authentication successful (mock)');
   }
 
@@ -232,7 +232,7 @@ server.registerTool(
   {
     description:
       'Lists all devices available in your Homey smart home system. Returns device information including name, type, capabilities, current state, and zone location.',
-    inputSchema: z.object({}).shape,
+    inputSchema: z.object({}),
   },
   async () => {
     try {
@@ -271,7 +271,7 @@ server.registerTool(
       deviceId: z
         .string()
         .describe('The unique identifier of the device to toggle'),
-    }).shape,
+    }),
   },
   async ({ deviceId }) => {
     try {
@@ -306,7 +306,7 @@ server.registerTool(
   {
     description:
       'Lists all automation flows configured in your Homey system. Returns flow information including name, enabled status, trigger conditions, and actions.',
-    inputSchema: z.object({}).shape,
+    inputSchema: z.object({}),
   },
   async () => {
     try {
