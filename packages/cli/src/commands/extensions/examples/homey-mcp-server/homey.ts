@@ -36,6 +36,15 @@ interface HomeyDeviceListResponse {
 
 /**
  * Helper function to get OAuth token for Homey API
+ *
+ * NOTE: This is a simplified implementation for demonstration purposes.
+ * In a production environment, you should implement proper OAuth 2.0 flow:
+ * 1. Use the client ID and secret to obtain an OAuth token from Homey's auth endpoint
+ * 2. Store and refresh tokens as needed
+ * 3. Never use the client secret directly as a bearer token
+ *
+ * For production use, consider using a library like `oauth` or `simple-oauth2`
+ * to handle the OAuth flow properly.
  */
 async function getHomeyToken(): Promise<string> {
   if (!HOMEY_CLIENT_ID || !HOMEY_CLIENT_SECRET) {
@@ -44,9 +53,12 @@ async function getHomeyToken(): Promise<string> {
     );
   }
 
-  // In a real implementation, this would handle OAuth flow
-  // For now, we'll use the client secret as a bearer token
-  // This is a simplified version - real Homey API uses OAuth 2.0
+  // SIMPLIFIED APPROACH - NOT FOR PRODUCTION
+  // In a real implementation, this would:
+  // 1. Make a POST request to Homey's OAuth token endpoint
+  // 2. Include client_id, client_secret, and grant_type=client_credentials
+  // 3. Extract and return the access_token from the response
+  // 4. Implement token caching and refresh logic
   return HOMEY_CLIENT_SECRET;
 }
 

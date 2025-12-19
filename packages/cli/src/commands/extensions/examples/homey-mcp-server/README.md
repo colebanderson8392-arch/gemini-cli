@@ -196,7 +196,16 @@ Quick prompt to control a Homey device by name.
 - **Never commit** your `HOMEY_CLIENT_ID` or `HOMEY_CLIENT_SECRET` to version
   control
 - Use environment variables or secure secret management
-- The server uses OAuth bearer token authentication
+- **Important**: This example implementation uses a simplified authentication
+  approach for demonstration purposes. The `getHomeyToken()` function uses the
+  client secret directly as a bearer token, which is NOT recommended for
+  production use.
+- For production deployments, implement proper OAuth 2.0 flow:
+  1. Use client credentials to obtain an OAuth access token from Homey's
+     authorization server
+  2. Store tokens securely and implement refresh logic
+  3. Use short-lived access tokens with refresh tokens
+  4. Consider using OAuth libraries like `oauth` or `simple-oauth2`
 - All API requests are made over HTTPS
 
 ## Troubleshooting

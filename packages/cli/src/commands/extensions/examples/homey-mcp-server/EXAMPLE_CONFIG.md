@@ -1,6 +1,7 @@
 # Example Configuration
 
-This example shows how to configure the Homey MCP server in your `settings.json` file.
+This example shows how to configure the Homey MCP server in your `settings.json`
+file.
 
 ## Installation
 
@@ -21,7 +22,8 @@ gemini extensions link .
 
 ## Configuration
 
-Add the following to your `~/.gemini/settings.json` or `.gemini/settings.json` file:
+Add the following to your `~/.gemini/settings.json` or `.gemini/settings.json`
+file:
 
 ```json
 {
@@ -93,8 +95,10 @@ After configuration, verify the server is connected:
 ```
 
 You should see `homeyServer` listed as `CONNECTED` with the available tools:
+
 - `list_devices`
 - `toggle_device`
 
 And the available prompt:
+
 - `control-device`
