@@ -1,13 +1,17 @@
 # Homey MCP Server
 
-This MCP (Model Context Protocol) server provides integration between Gemini CLI and Homey smart home systems. It allows you to list and control Homey devices through the Gemini CLI interface.
+This MCP (Model Context Protocol) server provides integration between Gemini CLI
+and Homey smart home systems. It allows you to list and control Homey devices
+through the Gemini CLI interface.
 
 ## Features
 
-- **List Devices**: Get a comprehensive list of all devices connected to your Homey system
+- **List Devices**: Get a comprehensive list of all devices connected to your
+  Homey system
 - **Toggle Devices**: Turn devices on/off or set specific capability values
 - **Secure Authentication**: Uses environment variables for client ID and secret
-- **Flexible Control**: Supports toggling current state or setting explicit values
+- **Flexible Control**: Supports toggling current state or setting explicit
+  values
 
 ## Setup
 
@@ -73,6 +77,7 @@ Please list all my Homey devices
 ```
 
 This will return a JSON response containing:
+
 - Device ID
 - Device name
 - Zone
@@ -95,6 +100,7 @@ Set the device with ID "abc123" to on
 ```
 
 You can also:
+
 - Toggle without specifying a value (will switch to opposite state)
 - Set specific capabilities (e.g., "dim" for brightness)
 - Set numeric or string values for compatible capabilities
@@ -114,6 +120,7 @@ Or with positional arguments:
 ```
 
 Actions supported:
+
 - `on`: Turn device on
 - `off`: Turn device off
 - `toggle`: Switch to opposite state (default)
@@ -128,7 +135,8 @@ Lists all devices connected to your Homey smart home system.
 
 **Parameters**: None
 
-**Returns**: 
+**Returns**:
+
 ```json
 {
   "devices": [
@@ -153,11 +161,14 @@ Lists all devices connected to your Homey smart home system.
 Toggles a Homey device on or off, or sets a specific capability value.
 
 **Parameters**:
+
 - `deviceId` (string, required): The unique ID of the device
 - `capability` (string, optional): The capability to control (default: "onoff")
-- `value` (boolean|number|string, optional): The value to set. If omitted, will toggle current state
+- `value` (boolean|number|string, optional): The value to set. If omitted, will
+  toggle current state
 
 **Returns**:
+
 ```json
 {
   "success": true,
@@ -175,12 +186,15 @@ Toggles a Homey device on or off, or sets a specific capability value.
 Quick prompt to control a Homey device by name.
 
 **Arguments**:
+
 - `deviceName` (string, required): Name of the device to control
-- `action` (string, optional): Action to perform - "on", "off", or "toggle" (default: "toggle")
+- `action` (string, optional): Action to perform - "on", "off", or "toggle"
+  (default: "toggle")
 
 ## Security Considerations
 
-- **Never commit** your `HOMEY_CLIENT_ID` or `HOMEY_CLIENT_SECRET` to version control
+- **Never commit** your `HOMEY_CLIENT_ID` or `HOMEY_CLIENT_SECRET` to version
+  control
 - Use environment variables or secure secret management
 - The server uses OAuth bearer token authentication
 - All API requests are made over HTTPS
@@ -190,6 +204,7 @@ Quick prompt to control a Homey device by name.
 ### Authentication Errors
 
 If you receive authentication errors:
+
 1. Verify your `HOMEY_CLIENT_ID` and `HOMEY_CLIENT_SECRET` are correct
 2. Check that the environment variables are properly set
 3. Ensure your Homey account has API access enabled
@@ -197,6 +212,7 @@ If you receive authentication errors:
 ### Device Not Found
 
 If a device cannot be found:
+
 1. Use `list_devices` to verify the device ID
 2. Check that the device is online in your Homey app
 3. Ensure you have permission to control the device
@@ -204,6 +220,7 @@ If a device cannot be found:
 ### Connection Issues
 
 If you cannot connect to the Homey API:
+
 1. Verify your `HOMEY_API_URL` is correct
 2. Check your internet connection
 3. Ensure the Homey API is accessible from your network
@@ -224,5 +241,4 @@ npm test
 
 ## License
 
-Copyright 2025 Google LLC
-SPDX-License-Identifier: Apache-2.0
+Copyright 2025 Google LLC SPDX-License-Identifier: Apache-2.0

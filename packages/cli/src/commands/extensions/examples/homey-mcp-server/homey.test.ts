@@ -163,8 +163,9 @@ describe('Homey MCP Server', () => {
       );
 
       expect(result).toHaveProperty('content');
-      const content = (result as { content: { type: string; text: string }[] })
-        .content;
+      const content = (
+        result as { content: Array<{ type: string; text: string }> }
+      ).content;
       expect(content).toHaveLength(1);
       expect(content[0].type).toBe('text');
 
@@ -187,8 +188,9 @@ describe('Homey MCP Server', () => {
       expect(result).toHaveProperty('content');
       expect(result).toHaveProperty('isError', true);
 
-      const content = (result as { content: { type: string; text: string }[] })
-        .content;
+      const content = (
+        result as { content: Array<{ type: string; text: string }> }
+      ).content;
       const responseData = JSON.parse(content[0].text);
       expect(responseData).toHaveProperty('error');
       expect(responseData.details).toContain('401');
@@ -218,8 +220,9 @@ describe('Homey MCP Server', () => {
       const result = await freshListDevicesFn({});
 
       expect(result).toHaveProperty('isError', true);
-      const content = (result as { content: { type: string; text: string }[] })
-        .content;
+      const content = (
+        result as { content: Array<{ type: string; text: string }> }
+      ).content;
       const responseData = JSON.parse(content[0].text);
       // When env vars are empty/missing, the API will return 401
       expect(responseData.error).toBe('Failed to list Homey devices');
@@ -263,8 +266,9 @@ describe('Homey MCP Server', () => {
       );
 
       expect(result).toHaveProperty('content');
-      const content = (result as { content: { type: string; text: string }[] })
-        .content;
+      const content = (
+        result as { content: Array<{ type: string; text: string }> }
+      ).content;
       const responseData = JSON.parse(content[0].text);
       expect(responseData.success).toBe(true);
       expect(responseData.value).toBe(true);
@@ -301,8 +305,9 @@ describe('Homey MCP Server', () => {
         expect.any(Object),
       );
 
-      const content = (result as { content: { type: string; text: string }[] })
-        .content;
+      const content = (
+        result as { content: Array<{ type: string; text: string }> }
+      ).content;
       const responseData = JSON.parse(content[0].text);
       expect(responseData.value).toBe(true); // Should toggle from false to true
     });
@@ -330,8 +335,9 @@ describe('Homey MCP Server', () => {
       });
 
       expect(result).toHaveProperty('isError', true);
-      const content = (result as { content: { type: string; text: string }[] })
-        .content;
+      const content = (
+        result as { content: Array<{ type: string; text: string }> }
+      ).content;
       const responseData = JSON.parse(content[0].text);
       expect(responseData.details).toContain('deviceId is required');
     });
@@ -350,8 +356,9 @@ describe('Homey MCP Server', () => {
       });
 
       expect(result).toHaveProperty('isError', true);
-      const content = (result as { content: { type: string; text: string }[] })
-        .content;
+      const content = (
+        result as { content: Array<{ type: string; text: string }> }
+      ).content;
       const responseData = JSON.parse(content[0].text);
       expect(responseData.details).toContain('404');
     });
