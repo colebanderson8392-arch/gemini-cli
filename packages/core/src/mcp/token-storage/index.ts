@@ -7,6 +7,7 @@
 export * from './types.js';
 export * from './base-token-storage.js';
 export * from './file-token-storage.js';
+export * from './keychain-token-storage.js';
 export * from './hybrid-token-storage.js';
 
 export const DEFAULT_SERVICE_NAME = 'gemini-cli-oauth';
