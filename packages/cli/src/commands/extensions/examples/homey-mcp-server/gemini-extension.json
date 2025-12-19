@@ -1,0 +1,16 @@
+{
+  "name": "homey-mcp-server",
+  "version": "1.0.0",
+  "mcpServers": {
+    "homeyServer": {
+      "command": "node",
+      "args": ["${extensionPath}${/}dist${/}homey.js"],
+      "cwd": "${extensionPath}",
+      "env": {
+        "HOMEY_CLIENT_ID": "$HOMEY_CLIENT_ID",
+        "HOMEY_CLIENT_SECRET": "$HOMEY_CLIENT_SECRET",
+        "HOMEY_API_URL": "$HOMEY_API_URL"
+      }
+    }
+  }
+}
