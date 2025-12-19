@@ -331,6 +331,64 @@ custom tools:
 See the [MCP Server Integration guide](./docs/tools/mcp-server.md) for setup
 instructions.
 
+#### Homey MCP Server
+
+The Gemini CLI includes a built-in MCP server for integrating with Homey smart
+home devices. This server allows you to control your Homey devices and manage
+automation flows directly from the CLI.
+
+**Setup:**
+
+1. **Get Homey API Credentials**: Obtain your client ID and secret from the
+   [Homey Developer Portal](https://developer.athom.com/).
+
+2. **Configure Environment Variables**: Copy `.env.example` to `.env` and add
+   your credentials:
+
+   ```bash
+   cp .env.example .env
+   # Edit .env and add your CLIENT_ID and CLIENT_SECRET
+   ```
+
+3. **Add to Gemini CLI Settings**: Configure the Homey server in your
+   `~/.gemini/settings.json`:
+
+   ```json
+   {
+     "mcpServers": {
+       "homey": {
+         "command": "node",
+         "args": ["scripts/start-homey-server.js"],
+         "env": {
+           "CLIENT_ID": "$HOMEY_CLIENT_ID",
+           "CLIENT_SECRET": "$HOMEY_CLIENT_SECRET"
+         }
+       }
+     }
+   }
+   ```
+
+4. **Set Environment Variables**: Export your Homey credentials:
+
+   ```bash
+   export HOMEY_CLIENT_ID="your_client_id"
+   export HOMEY_CLIENT_SECRET="your_client_secret"
+   ```
+
+**Available Tools:**
+
+- `list_devices` - List all Homey devices with their current states
+- `toggle_device` - Toggle device on/off state
+- `list_flows` - List automation flows
+
+**Example Usage:**
+
+```text
+> List my Homey devices
+> Turn off the living room light
+> Show me my Homey automation flows
+```
+
 ## 🤝 Contributing
 
 We welcome contributions! Gemini CLI is fully open source (Apache 2.0), and we
